@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class EnemySpawnDoor : MonoBehaviour
 {
-    GameObject[] EnemyMoveToPoints;
+    public GameObject[] EnemyMoveToPoints;
     public GameObject[] CurrentWaveToSpawn;
     int segementsOfWavesForLevel;
-    float TimeTillNextSpawn = .2f;
+    float TimeTillNextSpawn = .5f;
     //this will be for spawning the enemies in the SpawnEnemy function
-    int SpawnCount = 0;
+    public int SpawnCount = 0;
     void Start()
     {
         CurrentWaveToSpawn = GetComponent<EnemyWave>().enemiesForThisWave;
@@ -23,6 +23,7 @@ public class EnemySpawnDoor : MonoBehaviour
         if (TimeTillNextSpawn < 0 && SpawnCount <= CurrentWaveToSpawn.Length)
         {
             SpawnEnemy();
+            TimeTillNextSpawn = .5f;
         }
         if (TimeTillNextSpawn > -1)
         {
@@ -31,9 +32,10 @@ public class EnemySpawnDoor : MonoBehaviour
     }
     void SpawnEnemy()
     {
-        Instantiate(CurrentWaveToSpawn[SpawnCount], this.transform.position, Quaternion.identity);
-        SpawnCount++; 
-        
+        GameObject temp = Instantiate(CurrentWaveToSpawn[SpawnCount], this.transform.position, Quaternion.identity);
+        temp.GetComponent<EnemyScript>().GoToArea = EnemyMoveToPoints;
+        SpawnCount += 1;
+
     }
     bool IsWaveDone()
     {
