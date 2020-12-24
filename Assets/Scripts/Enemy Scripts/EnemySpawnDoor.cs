@@ -51,4 +51,10 @@ public class EnemySpawnDoor : MonoBehaviour
         //this as stated in the name will start to spawn the next wave 
         GetComponent<EnemyWave>().currentWave += 1;
     }
+    void DrawLines()
+    {
+        //this func will be for letting the player know where the enemies will be 
+        //moving to. it'll use the line renderer prefab
+        
+    }
 }

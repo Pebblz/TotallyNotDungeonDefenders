@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7511008376893790708}
   - component: {fileID: 2087278006390555767}
   - component: {fileID: 4458697839070177086}
-  - component: {fileID: -6218113470848085675}
   - component: {fileID: 579391001770109343}
+  - component: {fileID: -6218113470848085675}
   - component: {fileID: 1891878998852084846}
   m_Layer: 0
   m_Name: EnemyCube2
@@ -82,6 +82,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &579391001770109343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524554861649876879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6a9bbba910f974c8c9ca78554a8c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThisEnemiesWeight: 1
 --- !u!114 &-6218113470848085675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,19 +109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoToArea: []
   speed: 1
---- !u!114 &579391001770109343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3524554861649876879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c6a9bbba910f974c8c9ca78554a8c5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThisEnemiesWeight: 1
 --- !u!65 &1891878998852084846
 BoxCollider:
   m_ObjectHideFlags: 0
