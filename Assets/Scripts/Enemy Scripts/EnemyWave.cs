@@ -123,6 +123,7 @@ public class EnemyWave : MonoBehaviour
                 }
             }
         }
+         
     }
     //this adds monsters for the current wave to the array 
     void AddMonstersToArray()
