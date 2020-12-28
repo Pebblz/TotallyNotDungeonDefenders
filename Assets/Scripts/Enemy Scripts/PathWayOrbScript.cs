@@ -11,8 +11,6 @@ public class PathWayOrbScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //KeepParticleEffectsBehindOrb();
-
         if (AreasWentTo < GoToArea.Length)
         {
             if (Vector3.Distance(transform.position, GoToArea[AreasWentTo].transform.position) >= .01f)
@@ -36,9 +34,5 @@ public class PathWayOrbScript : MonoBehaviour
         //this is here so if the orbs get to the end of the path
         //and for when we start the waves it'll destroy the orbs
         Destroy(this.gameObject);
-    }
-    void KeepParticleEffectsBehindOrb()
-    {
-        transform.GetChild(0).GetComponent<Transform>().LookAt(transform);
     }
 }
