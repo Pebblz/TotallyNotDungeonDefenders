@@ -101,6 +101,7 @@ public class EnemyWave : MonoBehaviour
         Percent = Percent * .01f;
         float num1 = temp1.Length * Percent;
         Mathf.Round(num1);
+
         float num2 = temp2.Length * Percent;
         Mathf.Round(num2);
         int anotherTempNumber = 0;

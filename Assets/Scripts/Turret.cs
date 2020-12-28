@@ -23,12 +23,11 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(targets.Count);
         rof -= Time.deltaTime;
         if (rof <= 0f  )
         {
             rof = initRof;
-            if (targets.Peek() != null && targets.Count > 0)
+            if (targets.Count > 0)
             {
                 shoot(targets.Peek());
 
