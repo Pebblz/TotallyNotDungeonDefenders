@@ -7,50 +7,78 @@ public class EnemySpawnDoor : MonoBehaviour
 {
     [SerializeField]
     GameObject LineRendererPrefab;
-
+    [SerializeField]
+    GameObject PathwayOrb;
     //this will be for if you press q to spawn next wave
     bool spawnNextWave = false;
 
     public GameObject[] EnemyMoveToPoints;
     public GameObject[] CurrentWaveToSpawn;
     int segementsOfWavesForLevel;
-    float TimeTillNextSpawn = .5f;
+  
     //this will be for spawning the enemies in the SpawnEnemy function
     public int SpawnCount = 0;
+    #region Timers
+    float TimeTillNextEnemySpawn = .5f;
+    float TimeTillNextBallSpawn = 0f;
+    #endregion
     void Start()
     {
         CurrentWaveToSpawn = GetComponent<EnemyWave>().enemiesForThisWave;
         segementsOfWavesForLevel = GetComponent<EnemyWave>().segementsOfWavesForLevel;
-        DrawLines();
+        //DrawLines();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (TimeTillNextSpawn < 0 && SpawnCount < CurrentWaveToSpawn.Length - 1 && spawnNextWave == true)
+        #region The Meat
+        if (TimeTillNextEnemySpawn < 0 && SpawnCount < CurrentWaveToSpawn.Length - 1 && spawnNextWave == true)
         {
             SpawnEnemy();
-            TimeTillNextSpawn = .5f;
+            TimeTillNextEnemySpawn = .5f;
             SpawnCount += 1;
         }
-        if (TimeTillNextSpawn > -1)
+        if (TimeTillNextBallSpawn < 0)
         {
-            TimeTillNextSpawn -= Time.deltaTime;
+            SpawnPathOrb();
+            TimeTillNextBallSpawn = 3f;
         }
+        #endregion 
+
+        #region Key Presses
         if (Input.GetKey(KeyCode.Q))
         {
             spawnNextWave = true;
         }
+        #endregion
+
+        #region Active Timers
+        if (TimeTillNextEnemySpawn > -1)
+        {
+            TimeTillNextEnemySpawn -= Time.deltaTime;
+        }
+        if (TimeTillNextBallSpawn > -1)
+        {
+            TimeTillNextBallSpawn -= Time.deltaTime;
+        }
+        #endregion
     }
     void SpawnEnemy()
     {
         GameObject temp = Instantiate(CurrentWaveToSpawn[SpawnCount], this.transform.position, Quaternion.identity);
         temp.GetComponent<EnemyScript>().GoToArea = EnemyMoveToPoints;
     }
+    void SpawnPathOrb()
+    {
+        GameObject temp = Instantiate(PathwayOrb, this.transform.position, Quaternion.identity);
+        temp.GetComponent<PathWayOrbScript>().GoToArea = EnemyMoveToPoints;
+    }
     public void setEnemyArray()
     {
         CurrentWaveToSpawn = GetComponent<EnemyWave>().enemiesForThisWave;
     }
+
     bool IsWaveDone()
     {
         //this isn't done yet
