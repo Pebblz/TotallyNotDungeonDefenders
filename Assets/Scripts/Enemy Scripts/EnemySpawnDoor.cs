@@ -27,7 +27,7 @@ public class EnemySpawnDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TimeTillNextSpawn < 0 && SpawnCount < CurrentWaveToSpawn.Length && spawnNextWave == true)
+        if (TimeTillNextSpawn < 0 && SpawnCount < CurrentWaveToSpawn.Length - 1 && spawnNextWave == true)
         {
             SpawnEnemy();
             TimeTillNextSpawn = .5f;
@@ -46,6 +46,10 @@ public class EnemySpawnDoor : MonoBehaviour
     {
         GameObject temp = Instantiate(CurrentWaveToSpawn[SpawnCount], this.transform.position, Quaternion.identity);
         temp.GetComponent<EnemyScript>().GoToArea = EnemyMoveToPoints;
+    }
+    public void setEnemyArray()
+    {
+        CurrentWaveToSpawn = GetComponent<EnemyWave>().enemiesForThisWave;
     }
     bool IsWaveDone()
     {

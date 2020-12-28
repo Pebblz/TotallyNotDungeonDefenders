@@ -124,7 +124,8 @@ public class EnemyWave : MonoBehaviour
                 }
             }
         }
-         
+        Array.Resize(ref enemiesForThisWave, anotherTempNumber + anotherTempNumber2);
+        GetComponent<EnemySpawnDoor>().setEnemyArray();
     }
     //this adds monsters for the current wave to the array 
     void AddMonstersToArray()
