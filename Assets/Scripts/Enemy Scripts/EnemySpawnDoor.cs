@@ -39,7 +39,7 @@ public class EnemySpawnDoor : MonoBehaviour
             TimeTillNextEnemySpawn = .5f;
             SpawnCount += 1;
         }
-        if (TimeTillNextBallSpawn < 0)
+        if (TimeTillNextBallSpawn < 0 && spawnNextWave == false)
         {
             SpawnPathOrb();
             TimeTillNextBallSpawn = 3f;
