@@ -89,7 +89,7 @@ public class PlayerScript : MonoBehaviour
     }
 
     //just a simple function to lose health
-    public void HitPlayer(int amount)
+    public void HitPlayer(float amount)
     {
         health -= amount;
     }

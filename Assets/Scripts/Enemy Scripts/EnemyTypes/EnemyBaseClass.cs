@@ -12,17 +12,21 @@ public abstract class EnemyBaseClass : MonoBehaviour
     float health;
     float speed;
     PlayerScript playerScript;
-    public EnemyBaseClass(float _damage, float _health, float _speed)
+    EnemyScript enemyScript;
+    public virtual void Init(float _damage, float _health, float _speed)
     {
         damage = _damage;
         health = _health;
         speed = _speed;
     }
-    public void Start()
+    public void Awake()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         anim = GetComponent<Animator>();
     }
 
-    public void HitPlayer() {}
+    public void HitPlayer()
+    {
+        playerScript.HitPlayer(damage);
+    }
 }
