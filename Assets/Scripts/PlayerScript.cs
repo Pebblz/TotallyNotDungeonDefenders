@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     // Start is called before the first frame update
-
-
+    [SerializeField]
+    float health = 100;
     
     public float speed = 3f;
     public float jump = 8f;
@@ -88,8 +88,11 @@ public class PlayerScript : MonoBehaviour
         grounded = true;
     }
 
-
-  
+    //just a simple function to lose health
+    public void HitPlayer(int amount)
+    {
+        health -= amount;
+    }
 
  
 }
